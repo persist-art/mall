@@ -8,7 +8,7 @@ import App from './App.vue'
 const mock=true;
 if(mock){
     // import是预编译加载，被编译的时候就会被加载进来写入内存中；而require是从上到下开始执行的时候才去加载的，如果mock是false不会被加载
-    require('');
+    require('./mock/api');
 }
 // 根据前端的跨域方式做调整  /a/b : /api/a/b => /a/b
 //如果是代理方式这里面就只是/api，然后把vue.config里的target改成https://test-www.imooc.com,而且没必要写env.js和改package.json了
