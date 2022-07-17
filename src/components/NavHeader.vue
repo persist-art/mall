@@ -30,10 +30,10 @@
                 <li class="product" v-for="(item,index) in phoneList" :key="index">
                   <a :href="'/#/product/'+item.id" target="_blank">
                     <div class="pro-img">
-                      <img :src="item.mainImage" :alt="item.subtitle"></img>
+                      <img :src="item.mainImage" :alt="item.subtitle">
                     </div>
                     <div class="pro-name">{{item.name}}</div>
-                    <div class="pro-price">{{item.price | currency}}</div>
+                    <div class="pro-price">{{currency(item.price)}}</div>
                   </a>
                 </li>
               </ul>
@@ -50,7 +50,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="public/imgs/nav-img/nav-3-1.jpg" alt="" />
+                      <img src="../../public/imgs/nav-img/nav-3-1.jpg" alt="" />
                     </div>
                     <div class="pro-name">小米壁画电视 65英寸</div>
                     <div class="pro-price">6999元</div>
@@ -59,7 +59,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="public/imgs/nav-img/nav-3-2.jpg" alt="" />
+                      <img src="../../public/imgs/nav-img/nav-3-2.jpg" alt="" />
                     </div>
                     <div class="pro-name">小米全面屏电视E55A</div>
                     <div class="pro-price">1999元</div>
@@ -68,7 +68,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="public/imgs/nav-img/nav-3-3.png" alt="" />
+                      <img src="../../public/imgs/nav-img/nav-3-3.png" alt="" />
                     </div>
                     <div class="pro-name">小米电视4A 32英寸</div>
                     <div class="pro-price">699元</div>
@@ -77,7 +77,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="public/imgs/nav-img/nav-3-4.jpg" alt="" />
+                      <img src="../../public/imgs/nav-img/nav-3-4.jpg" alt="" />
                     </div>
                     <div class="pro-name">小米电视4A 55英寸</div>
                     <div class="pro-price">1799元</div>
@@ -86,7 +86,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="public/imgs/nav-img/nav-3-5.jpg" alt="" />
+                      <img src="../../public/imgs/nav-img/nav-3-5.jpg" alt="" />
                     </div>
                     <div class="pro-name">小米电视4A 65英寸</div>
                     <div class="pro-price">2699元</div>
@@ -95,7 +95,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-6.png" alt="" />
+                      <img src="../../public/imgs/nav-img/nav-3-6.png" alt="" />
                     </div>
                     <div class="pro-name">查看全部</div>
                     <div class="pro-price">查看全部</div>
@@ -121,13 +121,8 @@ export default {
   name: "nav-header",
   data() {
     return {
+      username:'',
       phoneList: [],
-    }
-  },
-  filters: {
-    currency(val) {
-      if (!val) return "0.00";
-      return "￥" + val.toFixed(2) + "元";
     }
   },
   mounted() {
@@ -138,6 +133,10 @@ export default {
     }
   },
   methods: {
+    currency(val) {
+      if (!val) return "0.00";
+      return "￥" + val.toFixed(2) + "元";
+    },
     login(){
     this.$router.push('/login');
     },
@@ -145,9 +144,10 @@ export default {
       this.axios.get("/products", {
           params: {
             categoryId: "100012",
-            pageSize: 6,
+            pageSize: 14,//因为导航有6条数据下面的栏有八条所以加起来是14条
           },
         }).then((res) => {
+          res.list=res.list.slice(6,14);
           this.phoneList = res.list;
         })
     },
@@ -182,7 +182,7 @@ export default {
         color: #ffffff;
         margin-right: 0;
         .icon-cart {
-          @include bgImg(16px, 12px, "public/imgs/icon-cart-checked.png");
+          @include bgImg(16px, 12px, "../../public/imgs/icon-cart-checked.png");
           margin-right: 4px;
         }
       }
@@ -287,7 +287,7 @@ export default {
             padding-left: 14px;
           }
           a {
-            @include bgImg(18px, 18px, "public/imgs/icon-search.png");
+            @include bgImg(18px, 18px, "../../public/imgs/icon-search.png");
             margin-left: 17px;
           }
         }

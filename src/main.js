@@ -1,10 +1,15 @@
 import { createApp } from 'vue'
-import router from './router'
+import * as VueRouter from 'vue-router'
+import routes from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'//把作用域对象挂载到vue实例中
 import App from './App.vue'
 // import env from './env'
-
+const router = VueRouter.createRouter({
+    // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
+    history: VueRouter.createWebHashHistory(),
+    routes, // `routes: routes` 的缩写
+})
 const mock=true;
 if(mock){
     // import是预编译加载，被编译的时候就会被加载进来写入内存中；而require是从上到下开始执行的时候才去加载的，如果mock是false不会被加载

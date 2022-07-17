@@ -1,5 +1,3 @@
-import Vue from 'vue'
-import Router from 'vue-router'
 import Home from './pages/home.vue'
 import Index from './pages/index.vue'
 import Product from './pages/product.vue'
@@ -10,10 +8,8 @@ import OrderConfirm from './pages/orderConfirm.vue'
 import OrderList from './pages/orderList.vue'
 import OrderPay from './pages/orderPay.vue'
 import AliPay from './pages/alipay.vue'
-Vue.useAttrs(Router);
 
-export default new Router({
-    routes:[
+export default [
         {
             path:'/',
             name:'home',
@@ -65,5 +61,4 @@ export default new Router({
                 }
             ]
         }
-    ]
-})
+    ];

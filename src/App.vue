@@ -1,6 +1,7 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
@@ -37,6 +38,7 @@ export default {
 }
 </script>
 
-<style>
-@import './assets/scss/config.scss'
+<style lang="scss">
+@import './assets/scss/reset.scss';
+@import './assets/scss/button.scss';
 </style>
