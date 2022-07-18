@@ -62,12 +62,12 @@
           v-for="(item, index) in adsList"
           v-bind:key="index"
         >
-          <img v-lazy="item.img" alt="" />
+          <img :src="item.img" alt="" />
         </a>
       </div>
       <div class="banner">
         <a href="/#/product/30">
-          <img v-lazy="'../../public/imgs/banner-1.png'" alt="" />
+          <img src="../../public/imgs/banner-1.png" alt="" />
         </a>
       </div>
     </div>
@@ -77,7 +77,7 @@
         <div class="wrapper">
           <div class="banner-left">
             <a href="/#/product/35"
-              ><img v-lazy="'../../public/imgs/mix-alpha.jpg'" alt=""
+              ><img src="../../public/imgs/mix-alpha.jpg" alt=""
             /></a>
           </div>
           <div class="list-box">
@@ -85,7 +85,7 @@
               <div class="item" v-for="(item, j) in arr" v-bind:key="j">
                 <span v-bind:class="{ 'new-pro': j % 2 == 0 }">新品</span>
                 <div class="item-img">
-                  <img v-lazy="item.mainImage" alt="" />
+                  <img v-bind:src="item.mainimg" alt="" />
                 </div>
                 <div class="item-info">
                   <h3>{{ item.name }}</h3>

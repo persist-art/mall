@@ -40,8 +40,9 @@ axios.interceptors.response.use(function (response){
         alert(res.msg);
     }
 })
+// eslint-disable-next-line no-undef
+Vue.use(VueLazyload, {
+    loading: '',
+})
 
-
-createApp(App).use(router).use(VueAxios, axios).use(VueLazyload, {
-    loading: '../public/imgs/loading-svg/loading-bars.svg',
-}).use(VueAwesomeSwiper).mount('#app')
+createApp(App).use(router).use(VueAxios, axios).use(VueLazyload).use(VueAwesomeSwiper).mount('#app')

@@ -62,12 +62,12 @@
           v-for="(item, index) in adsList"
           v-bind:key="index"
         >
-          <img v-lazy="item.img" alt="" />
+          <img :src="item.img" alt="" />
         </a>
       </div>
       <div class="banner">
         <a href="/#/product/30">
-          <img v-lazy="'../../public/imgs/banner-1.png'" alt="" />
+          <img src="../../public/imgs/banner-1.png" alt="" />
         </a>
       </div>
     </div>
@@ -77,7 +77,7 @@
         <div class="wrapper">
           <div class="banner-left">
             <a href="/#/product/35"
-              ><img v-lazy="'../../public/imgs/mix-alpha.jpg'" alt=""
+              ><img src="../../public/imgs/mix-alpha.jpg" alt=""
             /></a>
           </div>
           <div class="list-box">
@@ -85,12 +85,12 @@
               <div class="item" v-for="(item, j) in arr" v-bind:key="j">
                 <span v-bind:class="{ 'new-pro': j % 2 == 0 }">新品</span>
                 <div class="item-img">
-                  <img v-lazy="item.mainImage" alt="" />
+                  <img v-bind:src="item.mainimg" alt="" />
                 </div>
                 <div class="item-info">
                   <h3>{{ item.name }}</h3>
                   <p>{{ item.subtitle }}</p>
-                  <p class="price" @click="addCart(item.id)">{{ item.price }}元</p>
+                  <p class="price">{{ item.price }}元</p>
                 </div>
               </div>
             </div>
@@ -104,11 +104,7 @@
       title="提示"
       sureText="查看购物车"
       btnType="1"
-      modalType="middle" 
-      :showModal="showModal"
-      @submit="goToCart"
-      @cancel="showModal=false"
-      >
+      modalType="middle" :showModal="showModal">
       <template v-slot:body>
         <p>商品添加成功！</p>
       </template>
@@ -119,8 +115,8 @@
 <script>
 import ServiceBar from "../components/ServiceBar.vue";
 import Modal from "../components/Modal.vue";
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import 'swiper/css'
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "../swiper/css";
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "index",
@@ -239,20 +235,6 @@ export default {
           this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
         });
     },
-    addCart(){
-    this.showModal=true;
-      /* this.axios.post('/carts',{
-        productId:id,
-        selected: true
-      }).then(()=>{
-
-      }).catch(()=>{
-        this.showModal=true;
-      }) */
-    },
-    goToCart(){
-      this.$router.push('/cart');
-    }
   },
 };
 </script>

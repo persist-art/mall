@@ -5,7 +5,6 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'//把作用域对象挂载到vue实例中
 import App from './App.vue'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import VueLazyload from 'vue-lazyload'
 import 'swiper/css'
 // import env from './env'
 const router = VueRouter.createRouter({
@@ -41,7 +40,4 @@ axios.interceptors.response.use(function (response){
     }
 })
 
-
-createApp(App).use(router).use(VueAxios, axios).use(VueLazyload, {
-    loading: '../public/imgs/loading-svg/loading-bars.svg',
-}).use(VueAwesomeSwiper).mount('#app')
+createApp(App).use(router).use(VueAxios, axios).use(VueAwesomeSwiper).mount('#app')
