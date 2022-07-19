@@ -17,14 +17,6 @@ export default {
     }
   },
   mounted(){
-    if(this.$cookies.get('userId')){
-      //拉取用户信息
-      this.getUser();
-      //拉取购物车数量
-      this.getCartCount();
-    }
-  },
-  methods:{
     // storage.setItem('a',1);
     // storage.setItem('user',{a:1});
     // storage.setItem('abc',{a:1},'user');
@@ -39,25 +31,11 @@ export default {
       this.res=res;
     }); */
     // 本地集成mockjs实现数据mock
-    /* this.axios.get('/user/login').then((res)=>{
+    this.axios.get('/user/login').then((res)=>{
       this.res=res;
-    }); */
-    //拉取用户信息
-    getUser(){
-        this.axios.get('/user').then((res={})=>{
-        //to-do  保存到vuex里面
-        this.$store.dispatch('saveUserName',res.username);
-        })
-      },
-      //拉取购物车数量
-      getCartCount(){
-        this.axios.get('/carts/products/sum').then((res=0)=>{
-          this.$store.dispatch('saveCartCount',res);
-        })
-      }
-    }
+    });
   }
-
+}
 </script>
 
 <style lang="scss">

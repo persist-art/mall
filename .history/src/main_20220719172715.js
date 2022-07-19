@@ -30,19 +30,15 @@ axios.defaults.timeout=8000;
 axios.interceptors.response.use(function (response){
     // response.data获取接口的返回值
     let res=response.data;
-    let path=location.hash;
     // 状态码是0就代表成功
     if(res.status == 0){
         return res.data;
     }else if(res.status==10){
         // 10是自定义的一个状态码，登录异常设为了10。未登录就会跳转到登录页面
-        if(path != '#index'){
-            window.location.href = '/#/login';
-        }
+        window.location.href = '/#/login';
     }else{
         // 报错信息
         alert(res.msg);
-        return Promise.reject(res);
     }
 })
 

@@ -1,5 +1,4 @@
 import Home from './pages/home.vue'
-import Login from './pages/login.vue'
 import Index from './pages/index.vue'
 import Product from './pages/product.vue'
 import Detail from './pages/detail.vue'
@@ -31,11 +30,6 @@ export default [
                     component: Detail,
                 }
             ]
-        },
-        {
-            path: '/login',
-            name: 'login',
-            component: Login,
         },
         {
             path: '/cart',

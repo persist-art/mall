@@ -42,7 +42,6 @@ axios.interceptors.response.use(function (response){
     }else{
         // 报错信息
         alert(res.msg);
-        return Promise.reject(res);
     }
 })
 
